@@ -64,7 +64,7 @@ export const GamePage = () => {
                 </div>
             </div>
             <div className="row justify-content-center">
-                <button onClick={handleReviewModal} type="button" className="btn btn-black mt-4">Review</button>
+                {userInfo && <button onClick={handleReviewModal} type="button" className="btn btn-black mt-4">Review</button>}
                 {isReviewModalOpen && <ReviewModal closeModal={handleReviewModal} game={game} />}
             </div>
             <div className="row mt-4 justify-content-center">
@@ -79,7 +79,7 @@ export const GamePage = () => {
                 }, [])}
             </div>
             <div className="row justify-content-center">
-                {store.reviews &&<h2>Reviews by users:</h2>}
+                {store.reviews[0] &&<h2>Reviews by users:</h2>}
                 {store.reviews.map((review, index) => {
                     if(review.game_id == game.id){
                         return (

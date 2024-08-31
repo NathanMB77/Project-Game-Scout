@@ -94,13 +94,16 @@ def fetch_popular_games():
     payload = "fields name, cover, rating, rating_count, first_release_date;\r\nwhere rating_count > 200 & first_release_date > 1641016861;\r\nsort rating desc;"
     headers = {
         'Client-ID': 'o2vtxnf4vau6e9hwsuhhyr2lw2btkw',
-        'Authorization': 'Bearer 2rbb0z08nr6000468k9j76f4dmrqkp',
+        'Authorization': 'Bearer 3vaolqmz547wr9duldkw09vo2lkknn',
         'Content-Type': 'application/json',
         'Cookie': '__cf_bm=V8lg5oo1Wce.P0qaKsEq5Pn5ooZ6ScdRlZr9BYUN.Lw-1719431149-1.0.1.1-QMXeuEauQdEr1Dm3kZ1bcgQ_jNZCO9kI9_T.u.GB1Y.__dOuimKseZdlPuJynzA97_xmnothzBGhCnj6HMgrWw'
     }
     response = requests.request("POST", url, headers=headers, data=payload)
+    print(response.json())
     ids = ""
     for game in response.json():
+        print('aaaaaaaa')
+        print(game)
         ids += str(game['cover']) + ','
     ids = ids[:-1]
 
@@ -124,7 +127,7 @@ def search():
     payload = "fields name, cover, rating, rating_count, first_release_date;\r\nsearch \"" + searchTerm + "\";\r\nwhere cover != null & version_parent = null & parent_game = null;\r\nlimit 50;"
     headers = {
         'Client-ID': 'o2vtxnf4vau6e9hwsuhhyr2lw2btkw',
-        'Authorization': 'Bearer 2rbb0z08nr6000468k9j76f4dmrqkp',
+        'Authorization': 'Bearer 3vaolqmz547wr9duldkw09vo2lkknn',
         'Content-Type': 'application/json',
         'Cookie': '__cf_bm=V8lg5oo1Wce.P0qaKsEq5Pn5ooZ6ScdRlZr9BYUN.Lw-1719431149-1.0.1.1-QMXeuEauQdEr1Dm3kZ1bcgQ_jNZCO9kI9_T.u.GB1Y.__dOuimKseZdlPuJynzA97_xmnothzBGhCnj6HMgrWw'
     }
@@ -154,7 +157,7 @@ def fetch_game(game_id):
     payload = "fields name, rating, rating_count, first_release_date, summary, genres, platforms, screenshots;\r\nwhere id = " + str(game_id) + ";"
     headers = {
         'Client-ID': 'o2vtxnf4vau6e9hwsuhhyr2lw2btkw',
-        'Authorization': 'Bearer 2rbb0z08nr6000468k9j76f4dmrqkp',
+        'Authorization': 'Bearer 3vaolqmz547wr9duldkw09vo2lkknn',
         'Content-Type': 'application/json',
         'Cookie': '__cf_bm=V8lg5oo1Wce.P0qaKsEq5Pn5ooZ6ScdRlZr9BYUN.Lw-1719431149-1.0.1.1-QMXeuEauQdEr1Dm3kZ1bcgQ_jNZCO9kI9_T.u.GB1Y.__dOuimKseZdlPuJynzA97_xmnothzBGhCnj6HMgrWw'
     }
@@ -245,7 +248,7 @@ def fetch_all_reviews():
     reviews = MyGames.query.all()
     headers = {
         'Client-ID': 'o2vtxnf4vau6e9hwsuhhyr2lw2btkw',
-        'Authorization': 'Bearer 2rbb0z08nr6000468k9j76f4dmrqkp',
+        'Authorization': 'Bearer 3vaolqmz547wr9duldkw09vo2lkknn',
         'Content-Type': 'application/json',
         'Cookie': '__cf_bm=V8lg5oo1Wce.P0qaKsEq5Pn5ooZ6ScdRlZr9BYUN.Lw-1719431149-1.0.1.1-QMXeuEauQdEr1Dm3kZ1bcgQ_jNZCO9kI9_T.u.GB1Y.__dOuimKseZdlPuJynzA97_xmnothzBGhCnj6HMgrWw'
     }
@@ -265,7 +268,7 @@ def fetch_user_reviews(user_id):
     reviews = MyGames.query.filter_by(user_id=user_id).all()
     headers = {
         'Client-ID': 'o2vtxnf4vau6e9hwsuhhyr2lw2btkw',
-        'Authorization': 'Bearer 2rbb0z08nr6000468k9j76f4dmrqkp',
+        'Authorization': 'Bearer 3vaolqmz547wr9duldkw09vo2lkknn',
         'Content-Type': 'application/json',
         'Cookie': '__cf_bm=V8lg5oo1Wce.P0qaKsEq5Pn5ooZ6ScdRlZr9BYUN.Lw-1719431149-1.0.1.1-QMXeuEauQdEr1Dm3kZ1bcgQ_jNZCO9kI9_T.u.GB1Y.__dOuimKseZdlPuJynzA97_xmnothzBGhCnj6HMgrWw'
     }
@@ -285,7 +288,7 @@ def fetch_followed_reviews(user_id):
     user = Users.query.get(user_id)
     headers = {
         'Client-ID': 'o2vtxnf4vau6e9hwsuhhyr2lw2btkw',
-        'Authorization': 'Bearer 2rbb0z08nr6000468k9j76f4dmrqkp',
+        'Authorization': 'Bearer 3vaolqmz547wr9duldkw09vo2lkknn',
         'Content-Type': 'application/json',
         'Cookie': '__cf_bm=V8lg5oo1Wce.P0qaKsEq5Pn5ooZ6ScdRlZr9BYUN.Lw-1719431149-1.0.1.1-QMXeuEauQdEr1Dm3kZ1bcgQ_jNZCO9kI9_T.u.GB1Y.__dOuimKseZdlPuJynzA97_xmnothzBGhCnj6HMgrWw'
     }
